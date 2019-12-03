@@ -74,6 +74,11 @@ export class StackdriverTransformer extends Transform {
       baseEntry.serviceContext = {
         service: record.name,
       };
+
+      const version = record.version;
+      if (version) {
+        baseEntry.serviceContext.version = version;
+      }
     }
 
     if (req) {
